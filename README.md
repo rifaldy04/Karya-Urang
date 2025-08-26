@@ -1,11 +1,11 @@
-# 🌐 E-Commerce Siswa – EcoSchool Mart
+#  E-Commerce Siswa – EcoSchool Mart
 
 Website ini adalah platform e-commerce sederhana berbasis **HTML, CSS, dan JavaScript** dengan integrasi database **Supabase**.  
 Tujuan dibuatnya website ini adalah untuk mendukung siswa dalam berwirausaha dengan cara memperluas jangkauan pasar secara digital.  
 
 ---
 
-## ✨ Fitur Utama
+##  Fitur Utama
 - **Beranda**
   - Terdapat **slider produk** yang menampilkan produk yang tersedia hari ini.
   - Setiap **card produk** berisi:
@@ -23,7 +23,7 @@ Tujuan dibuatnya website ini adalah untuk mendukung siswa dalam berwirausaha den
 
 ---
 
-## ⚙️ Teknologi yang Digunakan
+##  Teknologi yang Digunakan
 - **Frontend:** HTML, CSS, JavaScript
 - **Database & Auth:** Supabase
 - **Integrasi Pesan:** WhatsApp Direct Link
