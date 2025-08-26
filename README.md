@@ -1,7 +1,7 @@
 #  E-Commerce Siswa – Karya Urang
 
 Website ini adalah platform e-commerce sederhana berbasis **HTML, CSS, dan JavaScript** dengan integrasi database **Supabase**.  
-Tujuan dibuatnya website ini adalah untuk mendukung siswa dalam berwirausaha dengan cara memperluas jangkauan pasar secara digital.  
+Tujuan dibuatnya website ini adalah untuk mendukung siswa dalam berwirausaha dengan cara memperluas jangkauan pasar secara digital di lingkungan sekolah.  
 
 ---
 
