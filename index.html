@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Karya Urang - Produk Kewirausahaan Sekolah</title>
+    <link rel="icon" href="https://uxdihxlqkxgezezibdmv.supabase.co/storage/v1/object/public/foto-web/logo%20ku.png" type="image/png">
+    <meta name="description" content="Platform e-commerce untuk produk kewirausahaan siswa sekolah" />
+    <meta name="author" content="Aldy" />
+    <meta property="og:title" content="Karya Urang - Produk Kewirausahaan Sekolah" />
+    <meta property="og:description" content="Platform e-commerce untuk produk kewirausahaan siswa sekolah" />
+    <meta property="og:type" content="website" />
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="https://uxdihxlqkxgezezibdmv.supabase.co/storage/v1/object/public/foto-web/logo%20ku.png" alt="Logo Karya Urang ">
+                <div class="logo-text">
+                    <h1>Karya Urang</h1>
+                    <p>Kreasi Siswa, Kualitas Terjaga</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <button class="nav-toggle" onclick="toggleNav()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active" onclick="showPage('beranda')"><i class="fas fa-home"></i> Beranda</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('produk')"><i class="fas fa-shopping-bag"></i> Produk</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('tentang')"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('kontak')"><i class="fas fa-envelope"></i> Kontak</a></li>
+                    <li><a href="#" class="nav-link" onclick="showPage('admin')"><i class="fas fa-user-shield"></i> Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Halaman Beranda -->
+        <section id="beranda" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <!-- Welcome text dengan animasi -->
+                    <h2 id="welcomeText" class="welcome-text">Selamat Datang di Karya Urang Mart</h2>
+                    <p class="hero-description">Temukan beragam produk berkualitas hasil karya siswa-siswi berbakat. Dari makanan lezat hingga kerajinan unik.</p>
+                    <button class="btn-primary gradient-button" onclick="showPage('produk')">
+                        <i class="fas fa-arrow-right"></i> Jelajahi Produk
+                    </button>
+                </div>
+            </div>
+
+             <!-- Slider Produk Hari Ini -->
+            <div class="slider-container">
+                <div class="slider-header">
+                    <h3> Produk Tersedia Hari Ini</h3>
+                </div>
+                <div class="slider" id="productSlider">
+                    <!-- Slider akan diisi oleh JavaScript dengan produk hari ini -->
+                </div>
+                <button class="slider-btn prev" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="slider-dots" id="sliderDots">
+                    <!-- Dots akan diisi oleh JavaScript -->
+                </div>
+            </div>
+
+            <!-- Section: Kenapa Memilih Karya Urang -->
+            <div class="why-choose-us">
+                <div class="container">
+                    <h2>Kenapa Memilih Karya Urang?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card muncul">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Mudah dan Aman</h3>
+                            <p>Memesan tanpa ribet, langsung pesan lewat WhatsApp dengan cara yang sederhana dan aman.</p>
+                        </div>
+                        <div class="feature-card muncul">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h3>Mendukung Kreativitas</h3>
+                            <p>Setiap produk menampilkan nama penjual dan kelas, mendukung siswa berjualan dengan bangga.</p>
+                        </div>
+                        <div class="feature-card muncul">
+                            <div class="feature-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>Fleksibel</h3>
+                            <p>Produk hari ini selalu bisa diperbarui sesuai kebutuhan dan ide kreatif siswa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Produk -->
+        <section id="produk" class="page">
+            <div class="container">
+                <h2><i class="fas fa-shopping-bag"></i> Produk Kami</h2>
+                
+                <!-- Search dan Filter -->
+                <div class="product-controls">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="searchProducts()">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <select id="categoryFilter" onchange="filterProducts()">
+                        <option value="all">Semua Kategori</option>
+                        <option value="makanan">Makanan</option>
+                        <option value="minuman">Minuman</option>
+                        <option value="kerajinan">Kerajinan</option>
+                    </select>
+                </div>
+
+                <!-- Grid Produk -->
+                <div class="product-grid" id="productGrid">
+                    <!-- Produk akan dimuat oleh JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Tentang Kami -->
+        <section id="tentang" class="page">
+            <div class="container">
+                <h2><i class="fas fa-info-circle"></i> Tentang Kami</h2>
+                
+                 <div class="about-content" id="aboutContent">
+                    <div class="about-card muncul">
+                        <h3> Profil Usaha</h3>
+                        <p>Karya Urang adalah platform e-commerce yang dibuat untuk mendukung siswa dalam mengembangkan keterampilan berwirausaha, dengan menampilkan produk-produk hasil karya siswa dalam program kewirausahaan sekolah. Kami berkomitmen untuk mendukung kreativitas dan jiwa bisnis siswa. Melalui website ini, siswa dapat memasarkan produk hasil karya mereka dengan mudah, aman, dan praktis. Setiap pesanan langsung terhubung ke WhatsApp penjual, sehingga transaksi lebih cepat dan transparan.</p>
+                    </div>
+
+                    <div class="vision-mission muncul">
+                        <div class="about-cards">
+                            <h3>Visi</h3>
+                            <p> Menjadi wadah digital yang mendorong siswa berwirausaha, kreatif, dan mandiri, serta membangun budaya kewirausahaan di lingkungan sekolah.</p>
+                        </div>
+                        <div class="about-cards">
+                            <h3>Misi</h3>
+                            <ul>
+                                <li>Menyediakan platform yang sederhana, aman, dan mudah digunakan untuk siswa berjualan.</li>
+                                <li>Memberikan ruang bagi siswa untuk memasarkan produk dan mengembangkan keterampilan bisnis.</li>
+                                <li>Mendorong kolaborasi, kreativitas, dan semangat kewirausahaan di kalangan siswa.</li>
+                                <li>Membantu sekolah dalam membangun ekosistem kewirausahaan berbasis teknologi digital.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="about-card muncul">
+                        <h3>Tujuan</h3>
+                        <p>Platform ini hadir untuk menghubungkan siswa dengan pasar yang lebih luas, menciptakan peluang ekonomi berkelanjutan, serta mendukung program sekolah dalam mencetak lulusan yang mandiri, kreatif, dan siap menghadapi dunia kerja.</p>
+                    </div>
+                </div>
+
+                <!-- Nilai-Nilai Kami -->
+                    <div class="values-section muncul">
+                        <h3>Nilai-Nilai Kami</h3>
+                        <div class="values-grid">
+                            <div class="value-item muncul">
+                                <div class="value-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h4>Inovasi</h4>
+                                <p>Selalu menghadirkan ide dan cara baru agar siswa dapat berkembang dalam berwirausaha digital.</p>
+                            </div>
+                            <div class="value-item muncul">
+                                <div class="value-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <h4>Kolaborasi</h4>
+                                <p>Membangun kerja sama antar siswa, guru, dan seluruh warga sekolah untuk menciptakan ekosistem usaha yang sehat.</p>
+                            </div>
+                            <div class="value-item muncul">
+                                <div class="value-icon">
+                                    <i class="fas fa-balance-scale"></i>
+                                </div>
+                                <h4>Integritas</h4>
+                                <p>Menjunjung tinggi kejujuran, tanggung jawab, dan etika dalam setiap aktivitas jual beli.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bergabunglah dengan Karya Urang -->
+                    <div class="join-us-section muncul">
+                        <div class="join-us-card">
+                            <h3>Bergabunglah dengan Karya Urang</h3>
+                            <p>Mari menjadi bagian dari gerakan wirausaha siswa yang kreatif, jujur, dan penuh semangat!</p>
+                            <button class="btn-primary gradient-button" onclick="showPage('kontak')">
+                                <i class="fas fa-envelope"></i> Hubungi Kami
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Kontak -->
+        <section id="kontak" class="page">
+            <div class="container">
+                <h2><i class="fas fa-envelope"></i> Hubungi Kami</h2>
+                
+                <div class="contact-content">
+                    <!-- Form Kontak -->
+                    <div class="contact-form">
+                        <h3></i> Kirim Pesan</h3>
+                        <form onsubmit="submitForm(event)">
+                            <div class="form-group">
+                                <label for="nama"><i class="fas fa-user"></i> Nama Lengkap</label>
+                                <input type="text" id="nama" name="nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nohp"><i class="fas fa-phone"></i> Nomor HP</label>
+                                <input type="tel" id="nohp" name="nohp" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pesan"><i
+                                class="fas fa-comment"></i> Pesan</label>
+                                <textarea id="pesan" name="pesan" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary gradient-button">
+                                <i class="fas fa-paper-plane"></i> Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Info Kontak -->
+                    <div class="contact-info">
+                        <h3></i> Informasi Kontak</h3>
+                        <div class="contact-links">
+                            <a href="https://wa.me/6285872375685" target="_blank" class="contact-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="https://www.instagram.com/osissmkidi?igsh=c2Iyb3VhOGhraTBh" target="_blank" class="contact-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfqNNftzf6fBLDQt4p_eBDDOH_qkTiiq_CB8RiY9MGw9-jdnw/viewform?usp=sharing&ouid=103849386761898545077" target="_blank" class="contact-link">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Daftar Produk Baru</span>
+                            </a>
+                        </div>
+                        <div class="operation-hours">
+                            <h4>Jam Operasional:</h4>
+                            <p>Jam operasional mengikuti ketersediaan siswa penjual. Pesanan akan diproses sesuai kesepakatan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Halaman Admin -->
+        <section id="admin" class="page">
+            <div class="container">
+                <!-- Login Form -->
+                <div id="adminLogin" class="admin-login">
+                    <div class="login-form">
+                        <h2></i> Login Admin</h2>
+                        <p>Masukkan kredensial admin untuk mengakses panel</p>
+                        <form onsubmit="adminLogin(event)">
+                        <div class="form-group">
+                            <label for="adminEmail"><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" id="adminEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword"><i class="fas fa-lock"></i> Password</label>
+                            <input type="password" id="adminPassword" required>
+                        </div>
+                        <button type="submit" class="btn-primary gradient-button">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                        </form>
+                        <div class="login-hint">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Panel -->
+                <div id="adminPanel" class="admin-panel" style="display: none;">
+                    <div class="admin-header"><h2>
+                        <h2></i> Admin Panel</h2>
+                        <button class="btn-logout" onclick="adminLogout()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                
+                <div class="admin-content">
+                    
+                    <!-- Daftar Produk -->
+                        <div class="admin-section">
+                            <h3><i class="fas fa-list"></i> Daftar Produk</h3>
+                            <div class="product-list" id="adminProductList">
+                                <!-- Daftar produk akan dimuat di sini -->
+                            </div>
+                        </div>
+
+
+                    <!-- Form Kelola Produk -->
+                        <div class="admin-section">
+                            <h3><i class="fas fa-plus-circle"></i> Kelola Produk</h3>
+                            <div class="product-management">
+                                <form id="productForm" onsubmit="saveProduct(event)">
+                                    <input type="hidden" id="editProductId" value="">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="productName"><i class="fas fa-tag"></i> Nama Produk</label>
+                                            <input type="text" id="productName" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="productPrice"><i class="fas fa-money-bill"></i> Harga</label>
+                                            <input type="text" id="productPrice" placeholder="Rp 15,000" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="productCategory"><i class="fas fa-list"></i> Kategori</label>
+                                            <select id="productCategory" required>
+                                                <option value="">Pilih Kategori</option>
+                                                <option value="makanan">Makanan</option>
+                                                <option value="minuman">Minuman</option>
+                                                <option value="kerajinan">Kerajinan</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="productSeller"><i class="fas fa-user"></i> Nama Penjual</label>
+                                            <input type="text" id="productSeller" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="productClass"><i class="fas fa-graduation-cap"></i> Kelas/Alumni</label>
+                                            <input type="text" id="productClass" placeholder="XII IPA 1 / Alumni 2023" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="productSaleDays"><i class="fas fa-calendar"></i> Hari Penjualan</label>
+                                            <input type="text" id="productSaleDays" placeholder="Senin, Rabu, Jumat" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="productDescription"><i class="fas fa-align-left"></i> Deskripsi</label>
+                                        <textarea id="productDescription" rows="3" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="productUpload"><i class="fas fa-upload"></i> Upload Gambar</label>
+                                    <input type="file" id="productUpload" accept="image/*" onchange="handleImageSelect(event)">
+                                    <div id="imagePreview" style="margin-top:10px;"></div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label for="productImage"><i class="fas fa-image"></i> URL Gambar Utama (opsional jika upload)</label>
+                                    <input type="url" id="productImage">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="productVariants"><i class="fas fa-tags"></i> Varian (pisahkan dengan koma)</label>
+                                        <input type="text" id="productVariants" placeholder="Original, Pedas, Manis" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="productWhatsapp"><i class="fab fa-whatsapp"></i> Nomor WhatsApp</label>
+                                        <input type="text" id="productWhatsapp" placeholder="6281234567890" required>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn-primary">
+                                            <i class="fas fa-save"></i> <span id="saveButtonText">Simpan Produk</span>
+                                        </button>
+                                        <button type="button" class="btn-secondary" onclick="cancelEdit()">
+                                            <i class="fas fa-times"></i> Batal
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>    
+
+                    <!-- Statistik Penjualan -->
+                    <div class="sales-stats">
+                        <h3>Statistik Penjualan</h3>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h4>Total Produk</h4>
+                                <p id="totalProducts">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Total Pesanan</h4>
+                                <p id="totalOrders">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Pesanan Hari Ini</h4>
+                                <p id="todayOrders">0</p>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-orders">
+                            <h4>Pesanan Terbaru</h4>
+                            <div id="recentOrdersList">
+                                <!-- Orders akan dimuat di sini -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Detail Produk -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody">
+                <!-- Konten detail produk akan dimuat di sini -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Karya Urang Mart. Dikembangkan oleh Tim Kewirausahaan SMK Informatika Dienul Islam.</p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
